@@ -27,13 +27,21 @@ export default defineConfig([
 			'@stylistic': stylistic
 		},
 		rules: {
+			// React
 			'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
 			'react-refresh/only-export-components': 'warn',
 			'react-hooks/rules-of-hooks': 'error',
 			'react-hooks/exhaustive-deps': 'warn',
 			'react/prop-types': 0,
 			'react/display-name': 0,
-
+			// MUI
+			'no-restricted-imports': [
+				'error',
+				{
+					patterns: [{ regex: '^@mui/[^/]+$' }]
+				}
+			],
+			// General
 			'no-console': 1,
 			'no-lonely-if': 1,
 			'no-trailing-spaces': 1,
