@@ -1,23 +1,13 @@
-import Button from '@mui/material/Button'
-import AccessAlarmIcon from '@mui/icons-material/AccessAlarm'
-import ThreeDRotation from '@mui/icons-material/ThreeDRotation'
-import HomeIcon from '@mui/icons-material/Home'
-import { pink } from '@mui/material/colors'
-import Typography from '@mui/material/Typography'
 import { useColorScheme } from '@mui/material/styles'
-import useMediaQuery from '@mui/material/useMediaQuery'
 import Box from '@mui/material/Box'
-import RadioGroup from '@mui/material/RadioGroup'
-import Radio from '@mui/material/Radio'
 import FormControl from '@mui/material/FormControl'
-import FormControlLabel from '@mui/material/FormControlLabel'
-import FormLabel from '@mui/material/FormLabel'
 import InputLabel from '@mui/material/InputLabel'
 import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
 import LightModeIcon from '@mui/icons-material/LightMode'
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined'
 import SettingsBrightnessIcon from '@mui/icons-material/SettingsBrightness'
+import Container from '@mui/material/Container'
 
 function ModeSelect() {
 	const { mode, setMode } = useColorScheme()
@@ -56,83 +46,45 @@ function ModeSelect() {
 						System
 					</Box>
 				</MenuItem>
-				</Select>
+			</Select>
 		</FormControl>
 	)
 }
 
 function App() {
-	const { mode, setMode } = useColorScheme()
-	const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)')
-	const prefersLightMode = useMediaQuery('(prefers-color-scheme: light)')
-
-	console.log('prefersDarkMode :>> ', prefersDarkMode)
-	console.log('prefersLightMode :>> ', prefersLightMode)
-
 	return (
-		<>
-			<hr />
-			<ModeSelect />
-			<hr />
+		<Container disableGutters maxWidth={false} sx={{ height: '100vh' }}>
 			<Box
 				sx={{
-					display: 'flex',
 					width: '100%',
-					alignItems: 'center',
-					justifyContent: 'center',
-					bgcolor: 'background.default',
-					color: 'text.primary',
-					borderRadius: 1,
-					p: 3,
-					minHeight: '56px'
+					height: (theme) => theme.trelloCustom.appBarHeight,
+					backgroundColor: 'primary.light',
+					display: 'flex',
+					alignItems: 'center'
 				}}>
-				<FormControl>
-					<FormLabel id='demo-theme-toggle'>Theme</FormLabel>
-					<RadioGroup
-						aria-labelledby='demo-theme-toggle'
-						name='theme-toggle'
-						row
-						value={mode ?? ''}
-						onChange={(event) => setMode(event.target.value)}>
-						<FormControlLabel
-							value='system'
-							control={<Radio />}
-							label='System'
-						/>
-						<FormControlLabel
-							value='light'
-							control={<Radio />}
-							label='Light'
-						/>
-						<FormControlLabel
-							value='dark'
-							control={<Radio />}
-							label='Dark'
-						/>
-					</RadioGroup>
-				</FormControl>
+				<ModeSelect />
 			</Box>
-			<hr />
-			<div>Pham Minh Tam</div>
-
-			<Typography variant='body2' color='text.secondary'>
-				Hello World
-			</Typography>
-
-			<Button variant='text'>Text</Button>
-			<Button variant='contained'>Contained</Button>
-			<Button variant='outlined'>Outlined</Button>
-			<AccessAlarmIcon />
-			<ThreeDRotation />
-
-			<HomeIcon />
-			<HomeIcon color='primary' />
-			<HomeIcon color='secondary' />
-			<HomeIcon color='success' />
-			<HomeIcon color='action' />
-			<HomeIcon color='disabled' />
-			<HomeIcon sx={{ color: pink[500] }} />
-		</>
+			<Box
+				sx={{
+					width: '100%',
+					height: (theme) => theme.trelloCustom.boardBarHeight,
+					backgroundColor: 'primary.light',
+					display: 'flex',
+					alignItems: 'center'
+				}}>
+				Board Bar
+			</Box>
+			<Box
+				sx={{
+					width: '100%',
+					height: (theme) =>
+						`calc(100vh - ${theme.trelloCustom.appBarHeight} - ${theme.trelloCustom.boardBarHeight})`,
+					display: 'flex',
+					backgroundColor: 'primary.main'
+				}}>
+				Board Content
+			</Box>
+		</Container>
 	)
 }
 

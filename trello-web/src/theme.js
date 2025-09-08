@@ -3,8 +3,9 @@ import { red, teal } from '@mui/material/colors'
 
 // Create a theme instance.
 const theme = createTheme({
-	cssVariables: {
-		colorSchemeSelector: 'class'
+	trelloCustom: {
+		'appBarHeight': '48px',
+		'boardBarHeight': '58px'
 	},
 	colorSchemes: {
 		dark: {
@@ -17,7 +18,7 @@ const theme = createTheme({
 		light: {
 			palette: {
 				primary: {
-					main: teal[500]
+					main: teal.A400
 				}
 			}
 		}
