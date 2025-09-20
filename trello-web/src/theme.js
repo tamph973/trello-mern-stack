@@ -1,5 +1,4 @@
 import { createTheme } from '@mui/material/styles'
-import { red } from '@mui/material/colors'
 
 // Create a theme instance.
 const theme = createTheme({
@@ -11,14 +10,70 @@ const theme = createTheme({
 		dark: {
 			palette: {
 				primary: {
-					main: red[500]
+					main: '#0079bf',
+					light: '#0098d1',
+					dark: '#005a8b'
+				},
+				secondary: {
+					main: '#ff6b6b',
+					light: '#ff8e8e',
+					dark: '#e55555'
 				}
 			}
 		},
 		light: {
 			palette: {
 				primary: {
-					main: '#007AC0'
+					main: '#0079bf',
+					light: '#0098d1',
+					dark: '#005a8b'
+				},
+				secondary: {
+					main: '#ff6b6b',
+					light: '#ff8e8e',
+					dark: '#e55555'
+				}
+			}
+		}
+	},
+	components: {
+		MuiButton: {
+			styleOverrides: {
+				root: {
+					textTransform: 'none'
+				}
+			}
+		},
+		MuiInputLabel: {
+			styleOverrides: {
+				root: ({ theme }) => {
+					return {
+						color: theme.palette.primary.main,
+						fontSize: '0.875rem'
+					}
+				}
+			}
+		},
+		MuiOutlinedInput: {
+			styleOverrides: {
+				root: ({ theme }) => {
+					return {
+						color: theme.palette.primary.main,
+						fontSize: '0.875rem',
+						'.MuiOutlinedInput-notchedOutline': {
+							borderColor: theme.palette.primary.light
+						},
+						'&:hover': {
+							'.MuiOutlinedInput-notchedOutline': {
+								borderColor: theme.palette.primary.main
+							}
+						},
+						'&.Mui-focused': {
+							'.MuiOutlinedInput-notchedOutline': {
+								borderWidth: '1.75px'
+							}
+						}
+					}
 				}
 			}
 		}
