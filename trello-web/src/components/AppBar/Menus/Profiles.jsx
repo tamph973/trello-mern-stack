@@ -33,7 +33,7 @@ const Profiles = () => {
 					<Avatar
 						src='https://cdn-icons-png.flaticon.com/512/6858/6858504.png'
 						alt='avatar'
-						sx={{ width: 34, height: 34 }}
+						sx={{ width: 36, height: 36 }}
 					/>
 				</IconButton>
 			</Tooltip>
